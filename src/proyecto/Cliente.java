@@ -11,13 +11,14 @@ package proyecto;
  */
 public class Cliente {
     
-    private String codigoCliente, nombre, telefono, email, direccion;
+    private String codigoCliente, nombre, telefono, email, direccion, casa;
 
     public Cliente(String codigoCliente, String nombre, String telefono, String email) {
         this.codigoCliente = codigoCliente;
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
+        
     }
 
     public String getCodigoCliente() {
