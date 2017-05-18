@@ -57,4 +57,8 @@ public abstract class Producto {
         System.out.println("El precio es: " + precio + "€");
         System.out.println("La cantidad en stock: " + cantidad);
     }
+    
+    public void modificar_precio (Producto p) {
+        
+    }
 }
