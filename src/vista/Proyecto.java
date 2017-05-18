@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto;
+package vista;
+
+import modelo.Empresa;
+import modelo.Empleado;
+import modelo.Administrador;
+import modelo.Trabajador;
 
 /**
  *

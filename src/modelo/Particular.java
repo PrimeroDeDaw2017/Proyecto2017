@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto;
+package modelo;
 
 /**
  *
  * @author alumno
  */
-public class Empresario extends Cliente {
+public class Particular extends Cliente {
     
-     private String cif;
+    private String dni;
     
-    public Empresario(String cif,String codigoCliente, String nombre, String telefono, String email) {
+    public Particular(String dni,String codigoCliente, String nombre, String telefono, String email) {
         super(codigoCliente, nombre, telefono, email);
         
-        this.cif=cif;
+        this.dni=dni;
       
         
     }
@@ -24,12 +24,15 @@ public class Empresario extends Cliente {
         
         super.mostrar();
         
-        System.out.println("El cif del empresario es :"+cif);
+        System.out.println("El dni del cliente es :"+dni);
         
     }
     
-    public String getCIF (){
-        return cif;
+    public String getDNI (){
+        return dni;
     }
+    
+    
+    
     
 }
