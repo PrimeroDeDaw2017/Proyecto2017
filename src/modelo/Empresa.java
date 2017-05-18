@@ -16,7 +16,7 @@ public class Empresa {
     
     private String cif, direccion, nombre;
     private LinkedList <Cliente> clientes;
- // private ArrayList <Producto> productos;
+    private ArrayList <Producto> productos;
     private LinkedList<Trabajador>trabajadores;
     private static int indice = 0;
 
@@ -25,7 +25,7 @@ public class Empresa {
         this.direccion = direccion;
         this.nombre = nombre;
         clientes = new LinkedList <> ();
-    //    productos = new ArrayList <> ();
+        productos = new ArrayList <> ();
         trabajadores = new LinkedList();
     }
 
@@ -34,7 +34,7 @@ public class Empresa {
         this.direccion = "Poligono Insdustrial - Palencia";
         this.nombre = "Authentic Movil";
         clientes = new LinkedList <> ();
-    //   productos = new ArrayList <> ();
+        productos = new ArrayList <> ();
         trabajadores = new LinkedList ();
         
     }
