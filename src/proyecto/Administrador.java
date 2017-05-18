@@ -17,7 +17,7 @@ public class Administrador extends Trabajador{
         super(dni, nombre, apellidos, telefono, contraseña);
     }
     
-    @Override
+    //Métodos
     public void mostrar() {
         super.mostrar();
     }

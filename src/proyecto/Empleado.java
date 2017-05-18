@@ -17,10 +17,12 @@ public class Empleado extends Trabajador{
         this.tipo_de_contrato = tipo_de_contrato;
     }
 
+    //Getters
     public String getTipo_de_contrato() {
         return tipo_de_contrato;
     }
     
+    //Métodos
     public void mostrar() {
         super.mostrar();
         System.out.println("El tipo de contrato es: " + tipo_de_contrato);
