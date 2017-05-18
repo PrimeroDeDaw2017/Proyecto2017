@@ -11,11 +11,20 @@ package proyecto;
  */
 public class Administrador extends Trabajador{
     
+    private Empresa emp = new Empresa ();
+    
     public Administrador(String dni, String nombre, String apellidos, String telefono, String contraseña) {
         super(dni, nombre, apellidos, telefono, contraseña);
     }
     
+    @Override
     public void mostrar() {
         super.mostrar();
+    }
+    
+    public void darAltaTrabajadores (Trabajador tr){
+  
+        emp.alta_Trabajador(tr);
+               
     }
 }
