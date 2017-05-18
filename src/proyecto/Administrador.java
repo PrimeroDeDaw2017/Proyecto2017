@@ -25,6 +25,6 @@ public class Administrador extends Trabajador{
     public void darAltaTrabajadores (Trabajador tr){
   
         emp.alta_Trabajador(tr);
-               
+               //
     }
 }
