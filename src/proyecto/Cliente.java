@@ -11,14 +11,13 @@ package proyecto;
  */
 public class Cliente {
     
-    private String codigoCliente, nombre, telefono, email, direccion, casa;
+    private String codigoCliente, nombre, telefono, email, direccion;
 
     public Cliente(String codigoCliente, String nombre, String telefono, String email) {
         this.codigoCliente = codigoCliente;
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
-        
     }
 
     public String getCodigoCliente() {
@@ -41,8 +40,16 @@ public class Cliente {
     public String getDireccion() {
         return direccion;
     }
-
-
+    
+    public void mostrar(){
+        
+        System.out.println("El codigo cliente es :"+codigoCliente);
+        System.out.println("El nombre del cliente es :"+nombre);
+        System.out.println("El telefono del cliente es :"+telefono);
+        System.out.println("El email del cliente es :"+email);
+        System.out.println("La direccion del cliente es :"+direccion);
+        
+    }
 
     
 }

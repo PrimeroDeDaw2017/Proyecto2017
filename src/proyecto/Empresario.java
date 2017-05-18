@@ -9,14 +9,14 @@ package proyecto;
  *
  * @author alumno
  */
-public class Particular extends Cliente {
+public class Empresario extends Cliente {
     
-    private String dni;
+     private String cif;
     
-    public Particular(String dni,String codigoCliente, String nombre, String telefono, String email) {
+    public Empresario(String cif,String codigoCliente, String nombre, String telefono, String email) {
         super(codigoCliente, nombre, telefono, email);
         
-        this.dni=dni;
+        this.cif=cif;
       
         
     }
@@ -24,15 +24,12 @@ public class Particular extends Cliente {
         
         super.mostrar();
         
-        System.out.println("El dni del cliente es :"+dni);
+        System.out.println("El cif del empresario es :"+cif);
         
     }
     
-    public String getDNI (){
-        return dni;
+    public String getCIF (){
+        return cif;
     }
-    
-    
-    
     
 }
