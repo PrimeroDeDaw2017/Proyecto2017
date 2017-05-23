@@ -5,6 +5,10 @@
  */
 package modelo;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
  *
  * @author alumno
@@ -16,7 +20,19 @@ public class Empleado extends Trabajador{
         super(dni, nombre, apellidos, telefono, contraseña);
         this.tipo_de_contrato = tipo_de_contrato;
     }
-
+    
+    public Empleado() {
+        super();
+        InputStreamReader entrada = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader (entrada);
+        try {
+            System.out.println("Tipo de contrato: ");
+            tipo_de_contrato = teclado.readLine();
+        } 
+        catch (IOException ex) {
+            System.out.println("ERROR: Fallo al leer del teclado, ¡enchufalo!");
+        }
+    }
     //Getters
     public String getTipo_de_contrato() {
         return tipo_de_contrato;

@@ -5,6 +5,10 @@
  */
 package modelo;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
  *
  * @author alumno
@@ -16,7 +20,19 @@ public class Movil extends Producto{
         super(marca, modelo, codigo_producto, descripcion, precio, cantidad);
         this.cobertura = cobertura;
     }
-
+    
+    public Movil() {
+        super();
+        InputStreamReader entrada = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader (entrada);
+        try {
+            System.out.println("Introduce el tipo de cobertura: ");
+            cobertura = teclado.readLine();
+        } 
+        catch (IOException ex) {
+            System.out.println("ERROR: Fallo al leer del teclado, ¡enchufalo!");
+        }
+    }
     //Getters
     public String getCobertura() {
         return cobertura;

@@ -6,6 +6,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -18,7 +19,6 @@ public class Empresa {
     private LinkedList <Cliente> clientes;
     private ArrayList <Producto> productos;
     private LinkedList<Trabajador>trabajadores;
-    private static int indice = 0;
 
     public Empresa(String cif, String direccion, String nombre) {
         this.cif = cif;
@@ -64,11 +64,56 @@ public class Empresa {
     }
 */
   
-    public void alta_Trabajador (Trabajador t){     
-        trabajadores.add(t);       
-        System.out.println("Se ha dado de alta el empleado");
-        t.mostrar();
+    public Producto consultar_producto(String cod) {
+        Iterator i = productos.iterator();
+        Producto p = null;
+        while (i.hasNext()){
+            p = (Producto) i.next();
+            if(p.getCodigo_producto() == cod) {
+                //p ya está guardado.
+            }
+            else  {
+                p = null;
+            }
         }
+        return p;
+    }
+    
+    public void alta_Trabajador (Trabajador t){
+        if(trabajadores.contains(t)){
+            t = null;
+            System.out.println("El trabajador que quieres introducir ya existe.");
+        }
+        else {
+            trabajadores.add(t);
+            System.out.println("Se ha dado de alta el empleado");
+            t.mostrar();
+        }      
+    }
+    
+    public void baja_Trabajador (Trabajador t){     
+        trabajadores.remove(t);       
+        System.out.println("Se ha dado de baja el empleado");
+        t.mostrar();
+    }
+    
+    public void alta_Producto(Producto p) {
+        if(productos.contains(p)){
+            p = null;
+            System.out.println("El trabajador que quieres introducir ya existe.");
+        }
+        else {
+            productos.add(p);
+            System.out.println("Se ha dado de alta un producto");
+            p.mostrar();
+        }      
+    }
+    
+    public void baja_Producto(Producto p) {
+        productos.remove(p);
+        System.out.println("Se ha descatalogado el producto");
+        p.mostrar();
+    }
     //
 
     

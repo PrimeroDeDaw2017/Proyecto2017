@@ -29,8 +29,8 @@ public class Proyecto {
     
        
             Administrador ref = (Administrador) t1;
-            
-            ref.darAltaTrabajadores(t2);
+            t1.darBajaProducto(( t1.consultarProducto(emp1) ), emp1);
+            ref.darAltaTrabajador(t2);
         
         
         //

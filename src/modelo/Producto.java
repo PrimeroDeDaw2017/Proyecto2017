@@ -5,6 +5,11 @@
  */
 package modelo;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Date;
+
 /**
  *
  * @author alumno
@@ -22,7 +27,28 @@ public abstract class Producto {
         this.precio = precio;
         this.cantidad = cantidad;
     }
-
+    public Producto (){
+        InputStreamReader entrada = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader (entrada);
+        
+        try {
+            System.out.println("Introduce la marca: ");
+            marca = teclado.readLine();
+            System.out.println("Introduce el modelo: ");
+            modelo = teclado.readLine();
+            System.out.println("Introduce el código del producto: ");
+            codigo_producto = teclado.readLine();
+            System.out.println("Introduce la descripcion: ");
+            descripcion = teclado.readLine();
+            System.out.println("Introduce el precio: ");
+            precio = Double.parseDouble(teclado.readLine());
+            System.out.println("Introduce la cantidad: ");
+            cantidad = Integer.parseInt(teclado.readLine());
+        }
+        catch (IOException ex) {
+            System.out.println("ERROR: Fallo al leer del teclado, enchufalo!");
+        }
+    }
     //Getters
     public String getMarca() {
         return marca;

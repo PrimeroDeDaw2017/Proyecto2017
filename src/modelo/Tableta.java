@@ -15,6 +15,9 @@ public class Tableta extends Producto{
         super(marca, modelo, codigo_producto, descripcion, precio, cantidad);
     }
     
+    public Tableta(){
+        super();
+    }
     //Métodos
     public void mostrar() {
         super.mostrar();
