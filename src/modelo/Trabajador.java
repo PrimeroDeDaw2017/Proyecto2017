@@ -17,6 +17,7 @@ import java.util.Date;
 public abstract class Trabajador {
     private String dni, nombre, apellidos, telefono, contraseña;
     private Date fecha_de_alta;
+    private boolean modificado;
 
     public Trabajador(String dni, String nombre, String apellidos, String telefono, String contraseña) {
         this.dni = dni;
@@ -24,7 +25,8 @@ public abstract class Trabajador {
         this.apellidos = apellidos;
         this.telefono = telefono;
         this.contraseña = contraseña;
-        this.fecha_de_alta = new Date();
+        fecha_de_alta = new Date();
+        modificado = true;
     }
     
     public Trabajador() {
@@ -32,7 +34,7 @@ public abstract class Trabajador {
         BufferedReader teclado = new BufferedReader (entrada);
         
         try {
-            System.out.println("Introduce DNI: ");
+            System.out.println("Introduce el DNI: ");
             dni = teclado.readLine();
             System.out.println("Introduce el nombre: ");
             nombre = teclado.readLine();
@@ -43,6 +45,7 @@ public abstract class Trabajador {
             System.out.println("Introduce la contraseña: ");
             contraseña = teclado.readLine();
             fecha_de_alta = new Date();
+            modificado = true;
         } 
         catch (IOException ex) {
             System.out.println("ERROR: Fallo al leer del teclado, enchufalo!");

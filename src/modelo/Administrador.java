@@ -83,4 +83,8 @@ public class Administrador extends Trabajador{
     public void darBajaTrabajador (Trabajador tr, Empresa e){
         e.baja_Trabajador(tr);
     }
+    
+    public void modificarPrecio (double precio, Producto pr, Empresa e) {
+        e.modificar_precio(precio, pr, e);
+    }
 }

@@ -12,14 +12,15 @@ import java.util.Date;
  * @author alumno
  */
 public class Venta {
-    private String codigo_de_venta, dni_empleado, codigo_cliente;
+    private String codigo_de_venta, dni_empleado, codigo_cliente, codigo_producto;
     private double importe;
     private Date fecha_venta;
 
-    public Venta(String codigo_de_venta, String dni_empleado, String codigo_cliente, double importe) {
+    public Venta(String codigo_de_venta, String dni_empleado, String codigo_cliente, String codigo_producto, double importe) {
         this.codigo_de_venta = codigo_de_venta;
         this.dni_empleado = dni_empleado;
         this.codigo_cliente = codigo_cliente;
+        this.codigo_producto = codigo_producto;
         this.importe = importe;
         this.fecha_venta = new Date();
     }
@@ -44,6 +45,11 @@ public class Venta {
     public Date getFecha_venta() {
         return fecha_venta;
     }
+
+    public String getCodigo_producto() {
+        return codigo_producto;
+    }
+    
     
     
     //Métodos

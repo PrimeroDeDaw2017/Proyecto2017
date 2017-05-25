@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -19,6 +22,7 @@ public class Empresa {
     private LinkedList <Cliente> clientes;
     private ArrayList <Producto> productos;
     private LinkedList<Trabajador>trabajadores;
+    private LinkedList<Venta>ventas;
 
     public Empresa(String cif, String direccion, String nombre) {
         this.cif = cif;
@@ -27,16 +31,28 @@ public class Empresa {
         clientes = new LinkedList <> ();
         productos = new ArrayList <> ();
         trabajadores = new LinkedList();
+        ventas = new LinkedList();
     }
 
     public Empresa (){
-        this.cif = "X21342";
-        this.direccion = "Poligono Insdustrial - Palencia";
-        this.nombre = "Authentic Movil";
-        clientes = new LinkedList <> ();
-        productos = new ArrayList <> ();
-        trabajadores = new LinkedList ();
+        InputStreamReader entrada = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader (entrada);
         
+        try {
+            System.out.println("Introduce el CIF: ");
+            cif = teclado.readLine();
+            System.out.println("Introduce la dirección: ");
+            direccion = teclado.readLine();
+            System.out.println("Introduce el nombre de la empresa: ");
+            nombre = teclado.readLine();
+            clientes = new LinkedList <> ();
+            productos = new ArrayList <> ();
+            trabajadores = new LinkedList ();
+            ventas = new LinkedList();
+        } 
+        catch (IOException ex) {
+            System.out.println("ERROR: Fallo al leer del teclado, enchufalo!");
+        }
     }
     
     public String getCif() {
@@ -74,6 +90,7 @@ public class Empresa {
             }
             else  {
                 p = null;
+                System.out.println("El producto buscado no existe.");
             }
         }
         return p;
@@ -89,6 +106,7 @@ public class Empresa {
             }
             else  {
                 t = null;
+                System.out.println("El trabajador buscado no existe.");
             }
         }
         return t;
@@ -131,6 +149,12 @@ public class Empresa {
     }
     //
 
+    public void modificar_precio(double precio, Producto pr, Empresa e) {
+        if (pr != null) {
+            pr.setPrecio(precio);
+        }
+    }
+    
     
    /* public void alta_Trabajador (Producto p){}
     

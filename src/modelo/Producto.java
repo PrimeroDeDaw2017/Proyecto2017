@@ -18,6 +18,7 @@ public abstract class Producto {
     private String marca, modelo, codigo_producto, descripcion;
     private double precio;
     private int cantidad;
+    private boolean modificado;
 
     public Producto(String marca, String modelo, String codigo_producto, String descripcion, double precio, int cantidad) {
         this.marca = marca;
@@ -26,6 +27,7 @@ public abstract class Producto {
         this.descripcion = descripcion;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.modificado = true;
     }
     public Producto (){
         InputStreamReader entrada = new InputStreamReader(System.in);
@@ -44,6 +46,7 @@ public abstract class Producto {
             precio = Double.parseDouble(teclado.readLine());
             System.out.println("Introduce la cantidad: ");
             cantidad = Integer.parseInt(teclado.readLine());
+            modificado = true;
         }
         catch (IOException ex) {
             System.out.println("ERROR: Fallo al leer del teclado, enchufalo!");
@@ -73,6 +76,12 @@ public abstract class Producto {
     public int getCantidad() {
         return cantidad;
     }
+    
+    //Setters
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+    
     
     //Métodos
     public void mostrar() {
