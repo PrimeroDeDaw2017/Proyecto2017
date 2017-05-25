@@ -27,7 +27,23 @@ public class Administrador extends Trabajador{
         super.mostrar();
     }
     
-    public Trabajador consultarEmpleado() {
+    public Trabajador consultarTrabajador(Empresa e) {
+        InputStreamReader entrada = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader (entrada);
+        Trabajador t = null;
+        try {
+            System.out.println("Introduce el DNI: ");
+            String dni = teclado.readLine();
+            
+            t = e.consultar_trabajador(dni);
+        }
+        catch (Exception ex){
+            System.out.println("Error al leer datos.");
+        }
+        
+        if (t == null) {
+            System.out.println("No se ha encontrado el trabajador");
+        }
         
         return t;
     }
@@ -64,7 +80,7 @@ public class Administrador extends Trabajador{
         }
     }
     
-    public void darBajaTrabajador (Empresa e){
+    public void darBajaTrabajador (Trabajador tr, Empresa e){
         e.baja_Trabajador(tr);
     }
 }

@@ -79,6 +79,21 @@ public class Empresa {
         return p;
     }
     
+    public Trabajador consultar_trabajador(String dni) {
+        Iterator i = trabajadores.iterator();
+        Trabajador t = null;
+        while (i.hasNext()){
+            t = (Trabajador) i.next();
+            if(t.getDni()== dni) {
+                //p ya está guardado.
+            }
+            else  {
+                t = null;
+            }
+        }
+        return t;
+    }
+    
     public void alta_Trabajador (Trabajador t){
         if(trabajadores.contains(t)){
             t = null;
