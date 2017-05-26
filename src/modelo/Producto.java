@@ -8,19 +8,18 @@ package modelo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Date;
 
 /**
  *
  * @author alumno
  */
 public abstract class Producto {
-    private String marca, modelo, codigo_producto, descripcion;
+    private String marca, modelo, descripcion;
     private double precio;
-    private int cantidad;
+    private int cantidad, codigo_producto;
     private boolean modificado;
 
-    public Producto(String marca, String modelo, String codigo_producto, String descripcion, double precio, int cantidad) {
+    public Producto(String marca, String modelo, int codigo_producto, String descripcion, double precio, int cantidad) {
         this.marca = marca;
         this.modelo = modelo;
         this.codigo_producto = codigo_producto;
@@ -39,7 +38,7 @@ public abstract class Producto {
             System.out.println("Introduce el modelo: ");
             modelo = teclado.readLine();
             System.out.println("Introduce el código del producto: ");
-            codigo_producto = teclado.readLine();
+            codigo_producto = Integer.parseInt(teclado.readLine());
             System.out.println("Introduce la descripcion: ");
             descripcion = teclado.readLine();
             System.out.println("Introduce el precio: ");
@@ -61,7 +60,7 @@ public abstract class Producto {
         return modelo;
     }
 
-    public String getCodigo_producto() {
+    public int getCodigo_producto() {
         return codigo_producto;
     }
 
@@ -80,6 +79,10 @@ public abstract class Producto {
     //Setters
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
     
     

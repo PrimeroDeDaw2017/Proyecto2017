@@ -17,8 +17,8 @@ public class Empresario extends Cliente {
     
      private String cif;
     
-    public Empresario(String cif,String codigoCliente, String nombre, String telefono, String email) {
-        super(codigoCliente, nombre, telefono, email);
+    public Empresario(String cif, String nombre, String telefono, String email) {
+        super(nombre, telefono, email);
         
         this.cif=cif;  
     }

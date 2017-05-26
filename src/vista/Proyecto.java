@@ -30,12 +30,14 @@ public class Proyecto {
         Administrador ref = (Administrador) t1;
         
         ref.darAltaTrabajador(emp1);
+        ref.darAltaProducto(emp1);
         
         t1.darBajaProducto(( t1.consultarProducto(emp1) ), emp1);
         ref.darBajaTrabajador(( ref.consultarTrabajador(emp1) ), emp1);
         
         ref.modificarPrecio(100,( ref.consultarProducto(emp1) ), emp1);
     
+        t1.venderProducto(2, t1.consultarProducto(emp1), emp1);
     }
     
 }

@@ -80,7 +80,7 @@ public class Empresa {
     }
 */
   
-    public Producto consultar_producto(String cod) {
+    public Producto consultar_producto(int cod) {
         Iterator i = productos.iterator();
         Producto p = null;
         while (i.hasNext()){
@@ -148,12 +148,6 @@ public class Empresa {
         p.mostrar();
     }
     //
-
-    public void modificar_precio(double precio, Producto pr, Empresa e) {
-        if (pr != null) {
-            pr.setPrecio(precio);
-        }
-    }
     
     
    /* public void alta_Trabajador (Producto p){}

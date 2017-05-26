@@ -17,8 +17,8 @@ public class Particular extends Cliente {
     
     private String dni;
     
-    public Particular(String dni,String codigoCliente, String nombre, String telefono, String email) {
-        super(codigoCliente, nombre, telefono, email);
+    public Particular(String dni, String nombre, String telefono, String email) {
+        super(nombre, telefono, email);
         
         this.dni=dni;
     }

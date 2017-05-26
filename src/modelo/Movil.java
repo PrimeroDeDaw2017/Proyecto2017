@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 public class Movil extends Producto{
     private String cobertura;
 
-    public Movil(String cobertura, String marca, String modelo, String codigo_producto, String descripcion, double precio, int cantidad) {
+    public Movil(String cobertura, String marca, String modelo, int codigo_producto, String descripcion, double precio, int cantidad) {
         super(marca, modelo, codigo_producto, descripcion, precio, cantidad);
         this.cobertura = cobertura;
     }

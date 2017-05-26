@@ -14,11 +14,11 @@ import java.io.InputStreamReader;
  * @author alumno
  */
 public class Cliente {
-    
-    private String codigoCliente, nombre, telefono, email, direccion;
+    private int codigoCliente;
+    private String nombre, telefono, email, direccion;
 
-    public Cliente(String codigoCliente, String nombre, String telefono, String email) {
-        this.codigoCliente = codigoCliente;
+    public Cliente(String nombre, String telefono, String email) {
+        codigoCliente = (int) (Math.random() * 99999) + 10000;
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
@@ -29,8 +29,7 @@ public class Cliente {
         BufferedReader teclado = new BufferedReader (entrada);
         
         try {
-            System.out.println("Introduce el código del cliente: ");
-            codigoCliente = teclado.readLine();
+            codigoCliente = (int) (Math.random() * 99999) + 10000;
             System.out.println("Introduce el nombre: ");
             nombre = teclado.readLine();
             System.out.println("Introduce el teléfono: ");
@@ -45,7 +44,7 @@ public class Cliente {
         }
     }
     
-    public String getCodigoCliente() {
+    public int getCodigoCliente() {
         return codigoCliente;
     }
 

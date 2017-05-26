@@ -85,6 +85,8 @@ public class Administrador extends Trabajador{
     }
     
     public void modificarPrecio (double precio, Producto pr, Empresa e) {
-        e.modificar_precio(precio, pr, e);
+        if (pr != null) {
+            pr.setPrecio(precio);
+        }
     }
 }

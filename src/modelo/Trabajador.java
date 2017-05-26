@@ -93,7 +93,7 @@ public abstract class Trabajador {
         Producto p = null;
         try {
             System.out.println("Introduce el código del producto: ");
-            String cod = teclado.readLine();
+            int cod = Integer.parseInt(teclado.readLine());
             
             p = e.consultar_producto(cod);
         }
@@ -111,7 +111,7 @@ public abstract class Trabajador {
     public void darAltaProducto (Empresa e){
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader teclado = new BufferedReader (entrada);
-        String dni, nombre, apellidos, telefono, contraseña;
+        
         Producto pr = null;
         int opcion = 0;
         
@@ -142,5 +142,30 @@ public abstract class Trabajador {
     
     public void darBajaProducto (Producto pr, Empresa e){
         e.baja_Producto(pr);
+    }
+    
+    public void venderProducto (int cantidad ,Producto pr, Empresa e) {
+        InputStreamReader entrada = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader (entrada);
+        
+        String id = null;
+        
+        if (pr != null) {
+            if (cantidad <= pr.getCantidad()) {
+                pr.setCantidad((pr.getCantidad()-cantidad));
+                try {
+                    System.out.println("Introduce el ID o CIF del comprador: ");
+                    id = teclado.readLine();
+                }
+                catch (Exception ex){
+                    System.out.println("Error al leer datos.");
+                }
+                //Creación de la venta simple.
+                Venta v = new Venta(id, pr.getCodigo_producto(), pr, cantidad);
+                
+                //Pregunta si el cliente está registrado o no.
+                //hacer
+            }
+        }
     }
 }

@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Date;
 
 /**
@@ -12,30 +15,58 @@ import java.util.Date;
  * @author alumno
  */
 public class Venta {
-    private String codigo_de_venta, dni_empleado, codigo_cliente, codigo_producto;
+    // id = DNI o CIF
+    private String dni_empleado, id_cliente;
+    private int codigo_producto, codigo_venta, cantidad_productos;
     private double importe;
     private Date fecha_venta;
 
-    public Venta(String codigo_de_venta, String dni_empleado, String codigo_cliente, String codigo_producto, double importe) {
-        this.codigo_de_venta = codigo_de_venta;
+    public Venta(String dni_empleado, String id_cliente, int codigo_producto, int cantidad_productos, double importe) {
+        codigo_venta = (int) (Math.random() * 99999) + 10000;
+        fecha_venta = new Date();
+        
         this.dni_empleado = dni_empleado;
-        this.codigo_cliente = codigo_cliente;
+        
+        this.id_cliente = id_cliente;
         this.codigo_producto = codigo_producto;
+        this.cantidad_productos = cantidad_productos;
         this.importe = importe;
-        this.fecha_venta = new Date();
+        
+    }
+    
+    public Venta(String id_cliente, int codigo_producto, Producto pr, int cantidad_productos) {
+        InputStreamReader entrada = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader (entrada);
+        
+        try {
+            codigo_venta = (int) (Math.random() * 99999) + 10000;
+            fecha_venta = new Date();
+        
+            System.out.println("Introduce el DNI del empleado que realizará la venta: ");
+            dni_empleado = teclado.readLine();
+            // id = DNI o CIF
+            this.id_cliente = id_cliente;
+            this.codigo_producto = codigo_producto;
+            this.cantidad_productos = cantidad_productos;
+            importe = pr.getPrecio() * cantidad_productos;
+        }
+        catch (IOException ex) {
+            System.out.println("ERROR: Fallo al leer del teclado, enchufalo!");
+        }
+        
     }
 
     //Getters
-    public String getCodigo_de_venta() {
-        return codigo_de_venta;
+    public int getCodigo_venta() {
+        return codigo_venta;
     }
 
     public String getDni_empleado() {
         return dni_empleado;
     }
 
-    public String getCodigo_cliente() {
-        return codigo_cliente;
+    public String getid_cliente() {
+        return id_cliente;
     }
 
     public double getImporte() {
@@ -46,7 +77,7 @@ public class Venta {
         return fecha_venta;
     }
 
-    public String getCodigo_producto() {
+    public int getCodigo_producto() {
         return codigo_producto;
     }
     

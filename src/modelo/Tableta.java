@@ -11,7 +11,7 @@ package modelo;
  */
 public class Tableta extends Producto{
 
-    public Tableta(String marca, String modelo, String codigo_producto, String descripcion, double precio, int cantidad) {
+    public Tableta(String marca, String modelo, int codigo_producto, String descripcion, double precio, int cantidad) {
         super(marca, modelo, codigo_producto, descripcion, precio, cantidad);
     }
     
