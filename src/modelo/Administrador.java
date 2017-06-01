@@ -51,7 +51,6 @@ public class Administrador extends Trabajador{
     public void darAltaTrabajador (Empresa e){
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader teclado = new BufferedReader (entrada);
-        String dni, nombre, apellidos, telefono, contraseña;
         Trabajador tr = null;
         int opcion = 0;
         

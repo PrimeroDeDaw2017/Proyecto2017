@@ -19,6 +19,7 @@ import java.util.LinkedList;
 public class Empresa {
     
     private String cif, direccion, nombre;
+    
     private LinkedList <Cliente> clientes;
     private ArrayList <Producto> productos;
     private LinkedList<Trabajador>trabajadores;
@@ -71,7 +72,8 @@ public class Empresa {
         return clientes;
     }
 
-  /*  public ArrayList<Producto> getProductos() {
+    //Metodos posible de mostrar Empleados / Productos / Clientes
+  /*public ArrayList<Producto> getProductos() {
         return productos;
     }
 
@@ -101,7 +103,7 @@ public class Empresa {
         Trabajador t = null;
         while (i.hasNext()){
             t = (Trabajador) i.next();
-            if(t.getDni()== dni) {
+            if(t.getDni().equals(dni)) {
                 //p ya está guardado.
             }
             else  {
@@ -127,7 +129,6 @@ public class Empresa {
     public void baja_Trabajador (Trabajador t){     
         trabajadores.remove(t);       
         System.out.println("Se ha dado de baja el empleado");
-        t.mostrar();
     }
     
     public void alta_Producto(Producto p) {
@@ -145,11 +146,94 @@ public class Empresa {
     public void baja_Producto(Producto p) {
         productos.remove(p);
         System.out.println("Se ha descatalogado el producto");
-        p.mostrar();
     }
-    //
     
+    public void alta_Cliente (Cliente c){
+        if(clientes.contains(c)){
+            c = null;
+            System.out.println("El cliente que quieres introducir ya existe.");
+        }
+        else {
+            clientes.add(c);
+            System.out.println("Se ha dado de alta el cliente");
+            c.mostrar();
+        }      
+    }
     
+    public void alta_Venta (Venta v){
+        if(ventas.contains(v)){
+            v = null;
+            System.out.println("El cliente que quieres introducir ya existe.");
+        }
+        else {
+            ventas.add(v);
+            System.out.println("Se ha dado de alta el cliente");
+            v.mostrar();
+        }      
+    }
+    
+    //Metodos de mostrar los arrays.
+    public void mostrarTrabajadores() {
+        System.out.println("======LISTA DE TRABAJADORES======");
+        for (Trabajador t : trabajadores) {
+            if (t instanceof Administrador) {
+                System.out.println("Administrador:");
+                t.mostrar();
+                System.out.println("");
+            }
+            else {
+                if (t instanceof Empleado) {
+                    System.out.println("Empleado:");
+                    t.mostrar();
+                    System.out.println("");
+                }
+            }
+        }
+    }
+    
+    public void mostrarProductos() {
+        System.out.println("======LISTA DE PRODUCTOS======");
+        for (Producto p : productos) {
+            if (p instanceof Movil) {
+                System.out.println("Móvil:");
+                p.mostrar();
+                System.out.println("");
+            }
+            else {
+                if (p instanceof Tableta) {
+                    System.out.println("Tableta:");
+                    p.mostrar();
+                    System.out.println("");
+                }
+            }
+        }
+    }
+    
+    public void mostrarClientes() {
+        System.out.println("======LISTA DE CLIENTES======");
+        for (Cliente c : clientes) {
+            if (c instanceof Particular) {
+                System.out.println("Particular:");
+                c.mostrar();
+                System.out.println("");
+            }
+            else {
+                if (c instanceof Empresario) {
+                    System.out.println("Empresario:");
+                    c.mostrar();
+                    System.out.println("");
+                }
+            }
+        }
+    }
+    
+    public void mostrarVentas() {
+        System.out.println("======LISTA DE VENTAS======");
+        for (Venta v : ventas) {
+            v.mostrar();
+            System.out.println("");
+        }
+    }
    /* public void alta_Trabajador (Producto p){}
     
     public void autenticar (){}

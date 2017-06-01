@@ -148,23 +148,50 @@ public abstract class Trabajador {
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader teclado = new BufferedReader (entrada);
         
-        String id = null;
+        Cliente c = null;
+        Venta v = null;
+        
+        String id_cliente = null;
+        int opcion = 0;
         
         if (pr != null) {
             if (cantidad <= pr.getCantidad()) {
-                pr.setCantidad((pr.getCantidad()-cantidad));
                 try {
-                    System.out.println("Introduce el ID o CIF del comprador: ");
-                    id = teclado.readLine();
+                    do {
+                        System.out.println("¿Que tipo de cliente va a realizar la compra? Introduce el nº de la opción.");
+                        System.out.println("1. Nuevo Cliente \n2. Cliente Existente.");
+                        opcion = Integer.parseInt(teclado.readLine());
+                    }
+                    while(opcion !=1 && opcion !=2);
+                    if (opcion == 1){
+                        c = new Cliente();
+                        //e.alta_Cliente(c);
+                        
+                    }
+                    else {
+                        if (opcion == 2){
+                            //No hay que dar de alta al cliente porque ya lo está.
+                        }
+                    }
+                    if (c != null){
+                        e.alta_Cliente(c);
+                    }
+                    //Reducir cantidad de Stock
+                    pr.setCantidad((pr.getCantidad()-cantidad));
+                    try {
+                        System.out.println("Introduce el ID o CIF del comprador: ");
+                        id_cliente = teclado.readLine();
+                    }
+                    catch (Exception ex){
+                        System.out.println("Error al leer datos.");
+                    }
+                    //Creación de la venta simple.
+                    v = new Venta(id_cliente, pr.getCodigo_producto(), pr, cantidad);
+                    e.alta_Venta(v);
                 }
                 catch (Exception ex){
                     System.out.println("Error al leer datos.");
                 }
-                //Creación de la venta simple.
-                Venta v = new Venta(id, pr.getCodigo_producto(), pr, cantidad);
-                
-                //Pregunta si el cliente está registrado o no.
-                //hacer
             }
         }
     }

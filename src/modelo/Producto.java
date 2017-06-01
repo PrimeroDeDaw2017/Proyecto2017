@@ -37,7 +37,7 @@ public abstract class Producto {
             marca = teclado.readLine();
             System.out.println("Introduce el modelo: ");
             modelo = teclado.readLine();
-            System.out.println("Introduce el código del producto: ");
+            System.out.println("Introduce el código del producto (Numérico): ");
             codigo_producto = Integer.parseInt(teclado.readLine());
             System.out.println("Introduce la descripcion: ");
             descripcion = teclado.readLine();
