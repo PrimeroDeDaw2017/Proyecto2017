@@ -5,12 +5,8 @@
  */
 package vista;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JProgressBar;
-import javax.swing.SwingWorker;
+import java.applet.*;
+import javax.swing.*;
 import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
@@ -46,7 +42,7 @@ public class Intro extends javax.swing.JFrame {
         jf.setLocationRelativeTo(null);
         progreso.setVisible(true);
         AudioClip sonido;
-        sonido = Applet.newAudioClip(getClass().getResource("../sonido/intro.wav"));
+        sonido = Applet.newAudioClip(getClass().getResource("Ficheros/sonido/intro.wav"));
         sonido.play();
         
         try{
@@ -83,7 +79,7 @@ public class Intro extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(progreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 314, 550, 10));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/intro.gif"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Ficheros/imagen/intro.gif"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

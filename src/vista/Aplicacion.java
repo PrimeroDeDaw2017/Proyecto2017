@@ -5,9 +5,11 @@
  */
 package vista;
 
+import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.*;
+import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import org.edisoncor.gui.util.Avatar;
@@ -28,17 +30,17 @@ public class Aplicacion extends javax.swing.JFrame {
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setTitle("AUTHENTIC-MOVIL");
      // this.setResizable(false);
-        this.setIconImage(new ImageIcon(getClass().getResource("/imagen/logofinal.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("Ficheros/imagen/logofinal.png")).getImage());
         this.setLocationRelativeTo(null);
         avatars = new ArrayList<>();
         this.llenarMenu();
     }
 
      public void llenarMenu(){
-        avatars.add(new Avatar("Acer", CargaImagen("/imagen/Acer.png")));
-        avatars.add(new Avatar("Ipad", CargaImagen("/imagen/Ipad.png")));
-        avatars.add(new Avatar("Acer", CargaImagen("/imagen/Acer.png")));
-        avatars.add(new Avatar("Ipad", CargaImagen("/imagen/Ipad.png")));
+        avatars.add(new Avatar("Acer", CargaImagen("Ficheros/imagen/Acer.png")));
+        avatars.add(new Avatar("Ipad", CargaImagen("Ficheros/imagen/Ipad.png")));
+        avatars.add(new Avatar("Acer", CargaImagen("Ficheros/imagen/Acer.png")));
+        avatars.add(new Avatar("Ipad", CargaImagen("Ficheros/imagen/Ipad.png")));
         menu.setAvatars(avatars);
     }
      
@@ -50,7 +52,7 @@ public class Aplicacion extends javax.swing.JFrame {
                  nb = letrasMayusculas[i];
              }
          }
-       avatars.add(new Avatar(nb+nombre.substring(1, nombre.length()), CargaImagen("/imagen/"+img+".png")));
+       avatars.add(new Avatar(nb+nombre.substring(1, nombre.length()), CargaImagen("Ficheros/imagen/"+img+".png")));
        menu.setAvatars(avatars);
      }
      
@@ -84,6 +86,14 @@ public class Aplicacion extends javax.swing.JFrame {
         opcionA1 = new javax.swing.JMenuItem();
         menuE = new javax.swing.JMenu();
         opcionE1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem22 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -92,7 +102,6 @@ public class Aplicacion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1270, 1014));
         setPreferredSize(new java.awt.Dimension(1270, 1014));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menu.setPreferredSize(new java.awt.Dimension(1270, 1014));
         menu.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -101,7 +110,6 @@ public class Aplicacion extends javax.swing.JFrame {
             }
         });
         menu.setLayout(new javax.swing.BoxLayout(menu, javax.swing.BoxLayout.LINE_AXIS));
-        getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 49, 634, 434));
 
         jMenuBar1.setBackground(new java.awt.Color(51, 255, 255));
         jMenuBar1.setToolTipText("");
@@ -132,7 +140,74 @@ public class Aplicacion extends javax.swing.JFrame {
 
         jMenuBar1.add(menuE);
 
+        jMenu1.setText("Herramientas");
+
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem6.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jMenuItem6.setText("D a t o s   d e   l a  E m p r e s a");
+        jMenu1.add(jMenuItem6);
+
+        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem7.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jMenuItem7.setText("C a l c  u l a d o r a");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem7);
+
+        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem8.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jMenuItem8.setText("B l o c  d e  N o t a s");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem8);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu6.setText("Ayuda");
+
+        jMenuItem21.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem21.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jMenuItem21.setText("A c e r c a   d e ...");
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem21);
+
+        jMenuItem22.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem22.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jMenuItem22.setText("G u i a   d e  U s u a r i o");
+        jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem22ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem22);
+
+        jMenuBar1.add(jMenu6);
+
+        jMenu2.setText("Salir");
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -158,6 +233,88 @@ public class Aplicacion extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_opcionE1ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            Runtime rt=Runtime.getRuntime();
+            Process p =rt.exec("calc");
+            p.waitFor();
+
+        }
+        catch (IOException ioe )
+        {
+            ioe.getStackTrace();
+        }
+        catch (InterruptedException ie )
+        {
+        }
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // block de notas
+        try
+        {
+            Runtime rt=Runtime.getRuntime();
+            Process p =rt.exec("notepad");
+            p.waitFor();
+
+        }
+        catch (IOException ioe )
+        {
+            ioe.getStackTrace();
+        }
+        catch (InterruptedException ie )
+        {
+        }
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+        // ayuda
+        try {
+            Acerca cli = new Acerca();
+            cli.setVisible(true);
+        } catch (Exception e) {
+        }
+
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+
+    private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
+        // manual
+        // try {
+            //  manual cli = new manual();
+            // cli.setVisible(true);
+            // } catch (Exception e) {
+            // }
+        //////////////
+        try {
+            File directorio = new File("temp"); //Creas un nuevo directorio a nivel de tu jar.
+            directorio.mkdirs();
+            directorio.setWritable(true);
+            //copias la direccion
+            String archivo = directorio.getCanonicalPath() + File.pathSeparator + "ayuda1.pdf";
+            //nuevo archivo en esa direccion
+            File temp = new File(archivo);
+            InputStream is = this.getClass().getResourceAsStream("/Pdf/MANUAL.pdf");
+            FileOutputStream archivoDestino = new FileOutputStream(temp);
+            FileWriter fw = new FileWriter(temp);
+            byte[] buffer = new byte[512 * 1024];
+            //lees el archivo hasta que se acabe...
+            int nbLectura;
+            while ((nbLectura = is.read(buffer)) != -1) {
+                archivoDestino.write(buffer, 0, nbLectura);
+            }
+            //cierras el archivo,el inputS y el FileW
+            fw.close();
+            archivoDestino.close();
+            is.close();
+            //abres el archivo temporal
+            Desktop.getDesktop().open(temp);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null,"error l abrir el rchivo");
+        }
+    }//GEN-LAST:event_jMenuItem22ActionPerformed
 
     public static void setAplicacion (Aplicacion a){
          ap = a;
@@ -218,9 +375,17 @@ public class Aplicacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private org.edisoncor.gui.panel.PanelAvatarChooser menu;
     private javax.swing.JMenu menuA;
     private javax.swing.JMenu menuE;
