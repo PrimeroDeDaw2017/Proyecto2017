@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
  *
  * @author alumno
  */
-public abstract class Producto {
+public abstract class Producto implements Comparable <Object> {
     private String marca, modelo, descripcion;
     private double precio;
     private int cantidad, codigo_producto;
@@ -99,4 +99,14 @@ public abstract class Producto {
     public void modificar_precio (Producto p) {
         
     }
+    
+    public int compareTo(Object arg0) {
+		int comparar = 0;
+		if (arg0 instanceof Producto){
+			Producto ref = (Producto) arg0;
+			comparar = this.codigo_producto-ref.codigo_producto;
+		}
+		return comparar;
+	}
+    
 }

@@ -5,15 +5,20 @@ import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import jxl.Workbook;
 import jxl.write.*;
+import modelo.Empresa;
 
 public final class GestionProducto extends javax.swing.JFrame {
 
     private File file;
     private List<JTable> tabla;
     private List<String> nom_files;
-   private final Aplicacion apl = Aplicacion.getAplicacion();
+    private final Aplicacion apl = Aplicacion.getAplicacion();
+    private Empresa emp;
+    String [] cabecera = {"Marca", "Modelo", "Codigo", "Descripcion", "Precio", "Cantidad", "Cobertura"};
+    DefaultTableModel tablaP;
    
     public GestionProducto() {
         initComponents();
@@ -691,6 +696,8 @@ public final class GestionProducto extends javax.swing.JFrame {
         }
 
          apl.cargaAutomatica(txtMarca_producto.getText(), txtMarca_producto.getText());
+        // tablaP.
+         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed

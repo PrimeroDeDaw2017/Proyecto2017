@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -244,15 +245,27 @@ public class Empresa {
             }
         }
     }
-   /* public void alta_Trabajador (Producto p){}
-    
-    public void autenticar (){}
-    
-      public void ordenar(Producto p){}
-    
-    public void mostrarEmpleados (){}
-    
-    public void mostrarProductos (){} */
-    
+    public void ordenar(){
+        Collections.sort(productos);
+    }
+  
+    public  String [][] getProductos(){
+       ordenar();
+       String [][] arrayProductos = new String [productos.size()][7];
+        for (int i = 0; i < productos.size(); i++){
+            Producto ref =(Producto) productos.get(i);
+            Movil m = (Movil) ref;
+            arrayProductos[i][0] = ref.getMarca();
+            arrayProductos[i][1] = ref.getModelo();
+            arrayProductos[i][2] = String.valueOf(ref.getCodigo_producto());
+            arrayProductos[i][3] = ref.getDescripcion();
+            arrayProductos[i][4] = String.valueOf(ref.getPrecio());
+            arrayProductos[i][5] = String.valueOf(ref.getCantidad());
+            arrayProductos[i][6] = m.getCobertura();
+        }      
+        return arrayProductos;
+        
+    }
+  
    
 }
