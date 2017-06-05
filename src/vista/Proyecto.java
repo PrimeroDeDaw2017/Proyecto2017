@@ -38,23 +38,25 @@ public class Proyecto {
         emp1.mostrarProductos();
         
         // 100 = Precio nuevo
+        /*
         ref.modificarPrecio(100,( ref.consultarProducto(emp1) ), emp1);
         System.out.println("El precio del producto debe ser 100.");
         emp1.mostrarProductos();
-        
+        */
         // 2 = Cantidad
         t1.venderProducto(2, t1.consultarProducto(emp1), emp1);
         System.out.println("La cantidad disponible del producto debe ser 2 menos");
         emp1.mostrarProductos();
-        
+        /*
         t1.darBajaProducto(( t1.consultarProducto(emp1) ), emp1);
         System.out.println("Debe mostrar 0 productos");
         emp1.mostrarProductos();
-        
+        */
+        /*
         ref.darBajaTrabajador(( ref.consultarTrabajador(emp1) ), emp1);
         System.out.println("Debe mostrar 0 trabajadores");
         emp1.mostrarTrabajadores();
-        
+        */
         emp1.mostrarVentas();
         emp1.mostrarClientes();
     }

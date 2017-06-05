@@ -88,4 +88,16 @@ public class Administrador extends Trabajador{
             pr.setPrecio(precio);
         }
     }
+
+    @Override
+    public void verHistorialVentas(Empresa e) {
+        try {
+            e.mostrarVentas();
+        }
+        catch (Exception ex) {
+            System.out.println("Error");
+        }
+    }
+    
+    
 }

@@ -13,8 +13,10 @@ import java.io.InputStreamReader;
  *
  * @author alumno
  */
-public class Cliente {
+public abstract class Cliente {
+    //Sirve para relacionar en la besa de datos, no quitar.
     private int codigoCliente;
+    
     private String nombre, telefono, email, direccion;
 
     public Cliente(String nombre, String telefono, String email) {

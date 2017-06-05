@@ -144,7 +144,7 @@ public abstract class Trabajador {
         e.baja_Producto(pr);
     }
     
-    public void venderProducto (int cantidad ,Producto pr, Empresa e) {
+    public void venderProducto (int cantidadV ,Producto pr, Empresa e) {
         InputStreamReader entrada = new InputStreamReader(System.in);
         BufferedReader teclado = new BufferedReader (entrada);
         
@@ -152,41 +152,62 @@ public abstract class Trabajador {
         Venta v = null;
         
         String id_cliente = null;
-        int opcion = 0;
+        int opcion1 = 0;
+        int opcion2 = 0;
         
         if (pr != null) {
-            if (cantidad <= pr.getCantidad()) {
+            if (cantidadV <= pr.getCantidad()) {
                 try {
                     do {
-                        System.out.println("¿Que tipo de cliente va a realizar la compra? Introduce el nº de la opción.");
-                        System.out.println("1. Nuevo Cliente \n2. Cliente Existente.");
-                        opcion = Integer.parseInt(teclado.readLine());
+                        System.out.println("¿Quién realizará la compra? Introduce el nº de la opción.");
+                        System.out.println("1. Nuevo Cliente \n2. Cliente Existente");
+                        opcion1 = Integer.parseInt(teclado.readLine());
                     }
-                    while(opcion !=1 && opcion !=2);
-                    if (opcion == 1){
-                        c = new Cliente();
-                        //e.alta_Cliente(c);
+                    while(opcion1 !=1 && opcion1 !=2);
+                    
+                    if (opcion1 == 1){
+                        do{
+                            System.out.println("¿Que tipo de cliente crearemos? Introduce el nº de la opción.");
+                            System.out.println("1. Particular \n2. Empresario");
+                            opcion2 = Integer.parseInt(teclado.readLine());
+                        }
+                        while(opcion2 !=1 && opcion2 !=2);
+                        
+                        if (opcion2 == 1){
+                            c = new Particular();
+                        }
+                        else{
+                            if (opcion2 == 2){
+                                c = new Empresario();
+                            }
+                        }
                         
                     }
                     else {
-                        if (opcion == 2){
+                        if (opcion1 == 2){
                             //No hay que dar de alta al cliente porque ya lo está.
                         }
                     }
+                    
                     if (c != null){
                         e.alta_Cliente(c);
                     }
-                    //Reducir cantidad de Stock
-                    pr.setCantidad((pr.getCantidad()-cantidad));
+                    
                     try {
-                        System.out.println("Introduce el ID o CIF del comprador: ");
+                        System.out.println("Introduce el DNI o CIF del comprador: ");
+                        System.out.println("NOTA: Si es un cliente nuevo, puedes verlo arriba.");
+                        System.out.println("Si no, debes saberlo o puedes consultar tus clientes disponibles.");
                         id_cliente = teclado.readLine();
                     }
                     catch (Exception ex){
                         System.out.println("Error al leer datos.");
                     }
+                    
+                    //Reducir cantidad de Stock
+                    pr.setCantidad((pr.getCantidad()-cantidadV));
+                    
                     //Creación de la venta simple.
-                    v = new Venta(id_cliente, pr.getCodigo_producto(), pr, cantidad);
+                    v = new Venta(id_cliente, pr.getCodigo_producto(), pr, cantidadV);
                     e.alta_Venta(v);
                 }
                 catch (Exception ex){
@@ -195,4 +216,6 @@ public abstract class Trabajador {
             }
         }
     }
+    
+    abstract public void verHistorialVentas(Empresa e);
 }

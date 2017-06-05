@@ -228,10 +228,20 @@ public class Empresa {
     }
     
     public void mostrarVentas() {
-        System.out.println("======LISTA DE VENTAS======");
+        System.out.println("======LISTA DE VENTAS GENERAL======");
         for (Venta v : ventas) {
             v.mostrar();
             System.out.println("");
+        }
+    }
+    
+    public void mostrarVentas(Trabajador tr) {
+        System.out.println("======LISTA DE VENTAS DE EMPLEADO======");
+        for (Venta v : ventas) {
+            if(v.getDni_empleado().equals(tr.getDni())){
+                v.mostrar();
+                System.out.println("");
+            }
         }
     }
    /* public void alta_Trabajador (Producto p){}

@@ -89,7 +89,7 @@ public class Venta {
         System.out.println("El DNI del empleado que ha vendido el producto es: " + dni_empleado);
         System.out.println("El DNI/CIF del comprador es: " + id_cliente);
         System.out.println("El código de producto vendido es: " + codigo_producto);
-        System.out.println("Se han vendido: " + cantidad_productos + "productos");
+        System.out.println("Se han vendido: " + cantidad_productos + " productos");
         System.out.println("El importe total de la venta es: " + importe + " €");
         System.out.println("La venta se ha realizado: " + fecha_venta);
     }

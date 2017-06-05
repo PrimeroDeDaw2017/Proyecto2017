@@ -43,4 +43,14 @@ public class Empleado extends Trabajador{
         super.mostrar();
         System.out.println("El tipo de contrato es: " + tipo_de_contrato);
     }
+
+    @Override
+    public void verHistorialVentas(Empresa e) {
+        try {
+            e.mostrarVentas(this);
+        }
+        catch (Exception ex) {
+            System.out.println("Error");
+        }
+    }
 }
