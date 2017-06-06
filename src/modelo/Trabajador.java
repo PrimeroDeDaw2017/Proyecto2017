@@ -209,6 +209,9 @@ public abstract class Trabajador {
                     //Creación de la venta simple.
                     v = new Venta(id_cliente, pr.getCodigo_producto(), pr, cantidadV);
                     e.alta_Venta(v);
+                    
+                    //Llamada al método de creación de la factura.
+                    
                 }
                 catch (Exception ex){
                     System.out.println("Error al leer datos.");

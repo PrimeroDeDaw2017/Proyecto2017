@@ -174,7 +174,7 @@ public class Empresa {
     
     //Metodos de mostrar los arrays.
     public void mostrarTrabajadores() {
-        System.out.println("======LISTA DE TRABAJADORES======");
+        System.out.println("\n======LISTA DE TRABAJADORES======");
         for (Trabajador t : trabajadores) {
             if (t instanceof Administrador) {
                 System.out.println("Administrador:");
@@ -192,7 +192,7 @@ public class Empresa {
     }
     
     public void mostrarProductos() {
-        System.out.println("======LISTA DE PRODUCTOS======");
+        System.out.println("\n======LISTA DE PRODUCTOS======");
         for (Producto p : productos) {
             if (p instanceof Movil) {
                 System.out.println("Móvil:");
@@ -210,7 +210,7 @@ public class Empresa {
     }
     
     public void mostrarClientes() {
-        System.out.println("======LISTA DE CLIENTES======");
+        System.out.println("\n======LISTA DE CLIENTES======");
         for (Cliente c : clientes) {
             if (c instanceof Particular) {
                 System.out.println("Particular:");
@@ -228,7 +228,7 @@ public class Empresa {
     }
     
     public void mostrarVentas() {
-        System.out.println("======LISTA DE VENTAS GENERAL======");
+        System.out.println("\n======LISTA DE VENTAS GENERAL======");
         for (Venta v : ventas) {
             v.mostrar();
             System.out.println("");
@@ -236,7 +236,7 @@ public class Empresa {
     }
     
     public void mostrarVentas(Trabajador tr) {
-        System.out.println("======LISTA DE VENTAS DE EMPLEADO======");
+        System.out.println("\n======LISTA DE VENTAS DE EMPLEADO======");
         for (Venta v : ventas) {
             if(v.getDni_empleado().equals(tr.getDni())){
                 v.mostrar();
