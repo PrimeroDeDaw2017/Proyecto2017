@@ -47,7 +47,7 @@ public class Empleado extends Trabajador{
     @Override
     public void verHistorialVentas(Empresa e) {
         try {
-            e.mostrarVentas(this);
+            e.getVentasTrabajador(this);
         }
         catch (Exception ex) {
             System.out.println("Error");

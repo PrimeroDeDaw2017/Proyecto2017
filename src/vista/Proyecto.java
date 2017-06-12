@@ -29,22 +29,22 @@ public class Proyecto {
         //Alta de 1 trabajador
         ref.darAltaTrabajador(empresa1);
         System.out.println("Debe mostrar 1 trabajador");
-        empresa1.mostrarTrabajadores();
+        empresa1.getTrabajadores();
         
         //Alta de 1 producto
         ref.darAltaProducto(empresa1);
         System.out.println("Deber mostrar 1 producto");
-        empresa1.mostrarProductos();
+        empresa1.getProductos();
         
         // 100 € = Precio nuevo del producto dado de alta.
         ref.modificarPrecio(100,( ref.consultarProducto(empresa1) ), empresa1);
         System.out.println("El precio del producto debe ser 100.");
-        empresa1.mostrarProductos();
+        empresa1.getProductos();
         
         // 2 = Cantidad a vender del producto dado de alta.
         t1.venderProducto(2, t1.consultarProducto(empresa1), empresa1);
         System.out.println("La cantidad disponible del producto debe ser 2 menos");
-        empresa1.mostrarProductos();
+        empresa1.getProductos();
         
         //Mostrar ventas de t1
         //En caso de que sea admin: Historial de Ventas General
@@ -54,18 +54,18 @@ public class Proyecto {
         //Baja del producto anterior.
         t1.darBajaProducto(( t1.consultarProducto(empresa1) ), empresa1);
         System.out.println("Debe mostrar 0 productos");
-        empresa1.mostrarProductos();
+        empresa1.getProductos();
         
         //Baja del trabajador anterior
         ref.darBajaTrabajador(( ref.consultarTrabajador(empresa1) ), empresa1);
         System.out.println("Debe mostrar 0 trabajadores");
-        empresa1.mostrarTrabajadores();
+        empresa1.getTrabajadores();
         
         //Ventas generales
-        empresa1.mostrarVentas();
+        empresa1.getVentas();
         
         //Clientes
-        empresa1.mostrarClientes();
+        empresa1.getClientes();
     }
     
 }

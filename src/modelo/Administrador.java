@@ -92,7 +92,7 @@ public class Administrador extends Trabajador{
     @Override
     public void verHistorialVentas(Empresa e) {
         try {
-            e.mostrarVentas();
+            e.getVentas();
         }
         catch (Exception ex) {
             System.out.println("Error");

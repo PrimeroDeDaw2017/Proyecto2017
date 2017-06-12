@@ -68,20 +68,8 @@ public class Empresa {
         return nombre;
     }
 
-    public LinkedList<Cliente> getClientes() {
-        return clientes;
-    }
-
-    //Metodos posible de mostrar Empleados / Productos / Clientes
-  /*public ArrayList<Producto> getProductos() {
-        return productos;
-    }
-
-    public Trabajador[] getTrabajadores() {
-        return trabajadores;
-    }
-*/
   
+    // METODOS CON PERMISOS DEL MODELO
     public Producto consultar_producto(int cod) {
         Iterator i = productos.iterator();
         Producto p = null;
@@ -173,7 +161,27 @@ public class Empresa {
     }
     
     //Metodos de mostrar los arrays.
-    public void mostrarTrabajadores() {
+    public String [][] getTrabajadores() {
+        // MODO GRAFICO
+        //OJO con size al agregar campos nuevos.
+        String [][] arrayTrabajadores = new String [trabajadores.size()][6];
+        for (int i = 0; i < trabajadores.size(); i++  )  {
+            Trabajador esteTrabajador = (Trabajador) trabajadores.get(i);
+            arrayTrabajadores[i][0] = esteTrabajador.getNombre() ;
+            arrayTrabajadores[i][1] = esteTrabajador.getApellidos();
+            arrayTrabajadores[i][2] = esteTrabajador.getTelefono();
+            arrayTrabajadores[i][3] = esteTrabajador.getDni();
+            arrayTrabajadores[i][4] = esteTrabajador.getContraseña();
+            if(esteTrabajador instanceof Empleado){
+                Empleado esteEmpleado = (Empleado) esteTrabajador;
+                arrayTrabajadores[i][5] = esteEmpleado.getTipo_de_contrato();
+            }
+            else {
+               arrayTrabajadores[i][5] = ""; 
+            }
+        } 
+        
+        // MODO TEXTO
         System.out.println("\n======LISTA DE TRABAJADORES======");
         for (Trabajador t : trabajadores) {
             if (t instanceof Administrador) {
@@ -189,9 +197,32 @@ public class Empresa {
                 }
             }
         }
+        
+        return arrayTrabajadores;
     }
     
-    public void mostrarProductos() {
+    public String [][] getProductos() {
+        // MODO GRAFICO
+        //OJO con size al agregar campos nuevos.
+        String [][] arrayProductos = new String [productos.size()][6];
+        for (int i = 0; i < productos.size(); i++  )  {
+            Producto esteProducto = (Producto) productos.get(i);
+            arrayProductos[i][0] = String.valueOf(esteProducto.getCodigo_producto());
+            arrayProductos[i][1] = esteProducto.getMarca();
+            arrayProductos[i][2] = esteProducto.getModelo();
+            arrayProductos[i][3] = String.valueOf(esteProducto.getCantidad());
+            arrayProductos[i][4] = String.valueOf(esteProducto.getPrecio());
+            arrayProductos[i][4] = esteProducto.getDescripcion();
+            if(esteProducto instanceof Movil){
+                Movil esteMovil = (Movil) esteProducto;
+                arrayProductos[i][5] = esteMovil.getCobertura();
+            }
+            else {
+               arrayProductos[i][5] = ""; 
+            }
+        } 
+        
+        // MODO TEXTO
         System.out.println("\n======LISTA DE PRODUCTOS======");
         for (Producto p : productos) {
             if (p instanceof Movil) {
@@ -207,9 +238,25 @@ public class Empresa {
                 }
             }
         }
+        
+        return arrayProductos;
     }
     
-    public void mostrarClientes() {
+    public String [][] getClientes() {
+        // MODO GRAFICO
+        //OJO con size al agregar campos nuevos.
+        String [][] arrayClientes = new String [clientes.size()][5];
+        for (int i = 0; i < clientes.size(); i++  )  {
+            Cliente esteCliente = (Cliente) clientes.get(i);
+            arrayClientes[i][0] = String.valueOf(esteCliente.getCodigoCliente());
+            arrayClientes[i][1] = esteCliente.getNombre();
+            arrayClientes[i][2] = esteCliente.getTelefono();
+            arrayClientes[i][3] = esteCliente.getEmail();
+            arrayClientes[i][4] = esteCliente.getDireccion();
+        }      
+        
+        
+        // MODO TEXTO
         System.out.println("\n======LISTA DE CLIENTES======");
         for (Cliente c : clientes) {
             if (c instanceof Particular) {
@@ -225,17 +272,52 @@ public class Empresa {
                 }
             }
         }
+        
+        return arrayClientes;
     }
     
-    public void mostrarVentas() {
+    public String [][] getVentas() {
+        // MODO GRAFICO
+        //OJO con size al agregar campos nuevos.
+        String [][] arrayVentas = new String [ventas.size()][6];
+        for (int i = 0; i < ventas.size(); i++  )  {
+            Venta estaVenta = (Venta) ventas.get(i);
+            arrayVentas[i][0] = estaVenta.getDni_empleado();
+            arrayVentas[i][1] = estaVenta.getid_cliente();
+            arrayVentas[i][2] = String.valueOf(estaVenta.getCodigo_producto());
+            arrayVentas[i][3] = String.valueOf(estaVenta.getCodigo_venta());
+            arrayVentas[i][4] = estaVenta.getFecha_venta()+" €" ;
+            arrayVentas[i][5] = estaVenta.getImporte()+" €";
+        }      
+        
+        
+        // MODO TEXTO
         System.out.println("\n======LISTA DE VENTAS GENERAL======");
         for (Venta v : ventas) {
             v.mostrar();
             System.out.println("");
         }
+        
+        return arrayVentas;
     }
     
-    public void mostrarVentas(Trabajador tr) {
+    public String [][] getVentasTrabajador(Trabajador tr) {
+        // MODO GRAFICO
+        //OJO con size al agregar campos nuevos.
+        String [][] arrayVentasT = new String [ventas.size()][6];
+        for (int i = 0; i < ventas.size(); i++  )  {
+            Venta estaVenta = (Venta) ventas.get(i);
+            if( estaVenta.getDni_empleado().equals(tr.getDni()) ) {
+                arrayVentasT[i][0] = estaVenta.getDni_empleado();
+                arrayVentasT[i][1] = estaVenta.getid_cliente();
+                arrayVentasT[i][2] = String.valueOf(estaVenta.getCodigo_producto());
+                arrayVentasT[i][3] = String.valueOf(estaVenta.getCodigo_venta());
+                arrayVentasT[i][4] = estaVenta.getFecha_venta()+" €" ;
+                arrayVentasT[i][5] = estaVenta.getImporte()+" €";
+            }
+        } 
+        
+        // MODO TEXTO
         System.out.println("\n======LISTA DE VENTAS DE EMPLEADO======");
         for (Venta v : ventas) {
             if(v.getDni_empleado().equals(tr.getDni())){
@@ -243,16 +325,14 @@ public class Empresa {
                 System.out.println("");
             }
         }
+        
+        return arrayVentasT;
     }
-   /* public void alta_Trabajador (Producto p){}
-    
+    /* 
     public void autenticar (){}
     
-      public void ordenar(Producto p){}
-    
-    public void mostrarEmpleados (){}
-    
-    public void mostrarProductos (){} */
+    public void ordenar(Producto p){} 
+    */
     
    
 }
