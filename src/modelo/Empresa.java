@@ -69,7 +69,16 @@ public class Empresa {
         return nombre;
     }
 
-  
+    //Añadir a los arrays
+    
+    public void addP(Producto p) {
+        productos.add(p);
+    }
+    
+    public void addT(Trabajador t) {
+        trabajadores.add(t);
+    }
+    
     // METODOS CON PERMISOS DEL MODELO
     public Producto consultar_producto(int cod) {
         Iterator i = productos.iterator();

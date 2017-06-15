@@ -8,8 +8,19 @@ package controlador;
 import java.sql.ResultSet;
 import modelo.Movil;
 import modelo.Tableta;
+
+import modelo.Particular;
+import modelo.Empresario;
+
+import modelo.Empleado;
+import modelo.Administrador;
+import modelo.Cliente;
+
 import modelo.Producto;
 import modelo.Empresa;
+import modelo.Trabajador;
+
+import modelo.Venta;
 /**
  *
  * @author alumno
@@ -25,41 +36,66 @@ public class SQLAlmacen {
         return instancia;
     }
     
-    public void descargarDatos(Almacen a) {
-        Animal an = null;
-        Vegetal ve = null;
+    public void descargarDatos(Empresa e) {
+        Movil mo = null;
+        Tableta ta = null;
+        
+        Empleado empl = null;
+        Administrador ad = null;
+        
+        Particular pa = null;
+        Empresario empr = null;
+        
+        Venta ve = null;
+        
+        Producto p = null;
+        Trabajador t = null;
+        Cliente c = null;
         // Nº de columna
-        int i1 = 1;
-        int i2 = 1;
+        int i = 1;
         try {
             ResultSet rsi1 = ConexionBD.instancia().getStatement().executeQuery(
-                "select * from productos_animales"
+                "select * from productos"
                 );
             while (rsi1.next()) {
                 //Cambiaremos de columna con el metodo absolute diciendole el nº.
-                rsi1.absolute(i1);
-                i1++;
-                an = new Animal(rsi1.getString(5), rsi1.getString(6), rsi1.getString(1), rsi1.getString(2), rsi1.getDouble(3), rsi1.getString(4));                Producto p;
-                p = an;
-                a.addP(p);
+                rsi1.absolute(i);
+                i++;
+                if(rsi1.getInt(7)==1) {
+                    // Moviles --> 1
+                    mo = new Movil(rsi1.getString(6), rsi1.getString(1), rsi1.getString(2), rsi1.getInt(3), rsi1.getString(5), rsi1.getDouble(4), rsi1.getInt(8));
+                    p = mo;
+                } 
+                else {
+                    // Tabletas --> 2
+                    ta = new Tableta(rsi1.getString(1), rsi1.getString(2), rsi1.getInt(3), rsi1.getString(5), rsi1.getDouble(4), rsi1.getInt(8));
+                    p = ta;
+                }
+                e.addP(p);
             }
+            
+            i = 0;
             
             ResultSet rsi2 = ConexionBD.instancia().getStatement().executeQuery(
                 "select * from productos_vegetales"
                 );
             while (rsi2.next()) {
                 //Cambiaremos de columna con el metodo absolute diciendole el nº.
-                rsi2.absolute(i2);
-                i2++;
-                ve = new Vegetal(rsi2.getString(5), rsi2.getString(6), rsi2.getString(1), rsi2.getString(2), rsi2.getDouble(3), rsi2.getString(4));
-                
-                Producto p;
-                p = ve;
-                a.addP(p);
+                rsi2.absolute(i);
+                i++;
+                if(rsi2.getInt(8)==1) {
+                    ad = new Administrador(rsi2.getString(1), rsi2.getString(3), rsi2.getString(4), rsi2.getString(6), rsi2.getString(5));
+                    t = ad;
+                }
+                else {
+                    empl = new Empleado(rsi2.getString(1), rsi2.getString(3), rsi2.getString(4), rsi2.getString(6), rsi2.getString(5), rsi2.getString(7));
+                    t = empl;
+                }
+                e.addT(t);
             }
         } 
-        catch (Exception e) {
-            e.printStackTrace();
+        catch (Exception exc) {
+            exc.printStackTrace();
         }
     }
     
